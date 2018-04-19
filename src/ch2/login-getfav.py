@@ -19,7 +19,7 @@ res = session.post(url_login, data=login_info)
 res.raise_for_status()
 
 soup = BeautifulSoup(res.text, "html.parser")
-a = soup.select_one(".isLogin a")
+a = soup.select_one(".islogin a")
 
 if a is None:
     print("Mypage does not taken")
