@@ -10,4 +10,3 @@ soup = BeautifulSoup(html, "html.parser")
 
 with open('test.html', mode='w', encoding='utf-8') as fw:
     fw.write(soup.prettify())
-
