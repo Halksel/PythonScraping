@@ -1,0 +1,9 @@
+ブックメーカーのポイント
+//*[@id="wrapper"]/div[3]/div[2]/div[2]/div[2]/div[2]/div[1]
+
+個人ランキング
+//*[@id="wrapper"]/div[3]/div[2]/div[1]/div[3]/div[1]
+//*[@id="wrapper"]/div[3]/div[2]/div[1]/div[3]/div[1]/div[3]/div[3]/div[2]/div[2]/span
+ギルドランキング
+//*[@id="wrapper"]/div[3]/div[2]/div[1]/div[3]/div[1]
+//*[@id="wrapper"]/div[3]/div[2]/div[1]/div[3]/div[1]/div[3]/div[2]/div[2]/div[2]/span
