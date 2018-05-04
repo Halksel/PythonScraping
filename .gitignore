@@ -1,3 +1,5 @@
 *.png
+*.log
 *DS_Store
-*mypy_cache
+*cache*
+*bot.py
