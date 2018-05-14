@@ -11,7 +11,6 @@ def to_csv(name, maxdata):
 
     rows, cols = struct.unpack(">II", img_f.read(8))
     pixels = rows * cols
-    res = []
     for idx in range(lbl_count):
         if idx > maxdata:
             break
