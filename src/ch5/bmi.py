@@ -45,4 +45,5 @@ for step in range(3500):
         print('step=', step, 'cre=', cre, 'acc=', acc)
 
 acc = sess.run(accuracy, feed_dict={x: test_pat, y_: test_ans})
+tw = tf.summary.FileWriter('log_dir', graph=sess.graph)
 print('rate', acc)
