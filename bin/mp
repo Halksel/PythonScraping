@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cwd=`dirname "${0}"`
+
+expr "${0}" : "/.*" > /dev/null || cwd=`(cd "${pwd}" && pwd)`
+
+echo "`mypy --ignore-missing-imports --disallow-untyped-defs $1 && python3 $1`"
