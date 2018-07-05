@@ -63,18 +63,22 @@ def getWeaponData(root, sleep_time_sec) -> Dict[str, List[str]]:
         time.sleep(sleep_time_sec)
     return dic
 
-def getWeapon(url: str, divn:int) -> Dict[str, List[str]]:
+
+def getWeapon(url: str, divn: int) -> Dict[str, List[str]]:
     html_text = requests.get(url).text
     root = html.fromstring(html_text)
-    trs = root.xpath("/html/body/table/tr/td[2]/div[2]/div["+ str(divn) +"]/table/tbody/tr")
+    trs = root.xpath("/html/body/table/tr/td[2]/div[2]/div[" + str(divn) +
+                     "]/table/tbody/tr")
     dic: Dict[str, List[str]] = {}
-    dic = getWeaponData(trs, 0.05)
+    dic = getWeaponData(trs, 0.1)
     return dic
 
-dic = getWeapon("http://gbf-wiki.com/index.php?%C9%F0%B4%EFSSR",5)
-dic = getWeapon("http://gbf-wiki.com/index.php?%C9%F0%B4%EFSR",4)
+
+dic = getWeapon("http://gbf-wiki.com/index.php?%C9%F0%B4%EFSR", 4)
+dic2 = getWeapon("http://gbf-wiki.com/index.php?%C9%F0%B4%EFSSR", 5)
+
+dic.update(dic2)
 
 print("武器名,属性,武器種,スキル,")
-print(len(dic))
 with open("../datas/pickles/weapon.pickle", 'wb') as f:
     pickle.dump(dic, f)
