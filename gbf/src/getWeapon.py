@@ -38,7 +38,10 @@ def getWeaponData(root, sleep_time_sec) -> Dict[str, List[str]]:
     dic: Dict[str, List[str]] = {}
     for node in root:
         lis: List[str] = []
-        url = node.xpath("td[1]/a")[0].attrib['href']
+        try:
+            url = node.xpath("td[1]/a")[0].attrib['href']
+        except:
+            continue
         name = getTextWithoutNone(node.xpath("td[2]")[0])
         if name is None or name[0] == '[':
             if node.find("td[2]/a") is not None:
