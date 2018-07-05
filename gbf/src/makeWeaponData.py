@@ -22,7 +22,6 @@ def add_sample(cat: int, fname: str, is_train: bool) -> None:
     img: Image = Image.open(fname).convert("RGB")
     img = img.resize((image_size, image_size))
     data = np.asarray(img)
-    print(data)
     X.append(data)
     Y.append(cat)
     if not is_train:
@@ -57,7 +56,7 @@ for i, k in enumerate(names):
         test.append(k)
 
 X_train, Y_train = make_sample(train, True)
-X_test, Y_test = make_sample(train, False)
+X_test, Y_test = make_sample(test, False)
 xy = (X_train, Y_train, X_test, Y_test)
 np.save("../datas/pickles/weapon.npy", xy)
 print(Y_train)
