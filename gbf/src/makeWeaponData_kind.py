@@ -10,7 +10,7 @@ imgPath: str = '../datas/img/weapons'
 with open("../datas/pickles/weapon.pickle", 'rb') as f:
     datas = pickle.load(f)
 
-category = ["火", "水", "風", "土", "光", "闇", ""]
+category = ["剣","短剣","刀","斧","弓","格闘","槍","銃","楽器","杖"]
 nb_class = len(category)
 image_size = 64
 
@@ -58,5 +58,5 @@ for i, k in enumerate(names):
 X_train, Y_train = make_sample(train, True)
 X_test, Y_test = make_sample(test, False)
 xy = (X_train, Y_train, X_test, Y_test)
-np.save("../datas/pickles/weapon.npy", xy)
+np.save("../datas/pickles/weapon_kind.npy", xy)
 print(Y_train)
