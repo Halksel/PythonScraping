@@ -10,7 +10,7 @@ imgPath: str = '../datas/img/weapons'
 with open("../datas/pickles/weapon.pickle", 'rb') as f:
     datas = pickle.load(f)
 
-category = ["剣","短剣","刀","斧","弓","格闘","槍","銃","楽器","杖"]
+category = ["剣", "短剣", "刀", "斧", "弓", "格闘", "槍", "銃", "楽器", "杖"]
 nb_class = len(category)
 image_size = 64
 
@@ -39,10 +39,17 @@ def add_sample(cat: int, fname: str, is_train: bool) -> None:
 
 def make_sample(files: List[str], is_train: bool) -> tuple:
     global X, Y
-    X = []; Y = []
+    X = []
+    Y = []
     for k in files:
-        add_sample(category.index(datas[k][0]), imgPath + "/" + k + ".png", is_train)
+        try:
+            add_sample(
+                category.index(datas[k][1]), imgPath + "/" + k + ".png",
+                is_train)
+        except:
+            continue
     return np.array(X), np.array(Y)
+
 
 names = list(datas.keys())
 random.shuffle(names)
