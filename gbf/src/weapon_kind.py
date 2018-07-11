@@ -39,6 +39,7 @@ def build_model(in_shape):
     model.add(Dropout(0.5))
     model.add(Dense(nb_classes))
     model.add(Activation('softmax'))
+    model.summary()
     model.compile(
         loss='binary_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
     return model
@@ -46,7 +47,7 @@ def build_model(in_shape):
 
 def model_train(X, y):
     model = build_model(X.shape[1:])
-    model.fit(X, y, batch_size=32, nb_epoch=30)
+    model.fit(X, y, batch_size=16, nb_epoch=3)
     # モデルを保存する --- (※4)
     hdf5_file = "../datas/models/weapon-model-kind.hdf5"
     model.save_weights(hdf5_file)
