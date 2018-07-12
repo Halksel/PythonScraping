@@ -42,7 +42,7 @@ b: Set[int] = set(random.randint(50, 150, 100))
 print(a)
 print(b)
 
-fs = [lambda x: hashlib.md5(x), lambda x: hashlib.sha256(x)]
+fs = [hashlib.md5, hashlib.sha256, hashlib.sha224]
 shifts = ['', 'a', 'aa', 'aaa']
 hashs = list(map(create_hash, itertools.product(fs, shifts)))
 
