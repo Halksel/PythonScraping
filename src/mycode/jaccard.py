@@ -2,6 +2,7 @@ from numpy import random
 from typing import List, Dict, Tuple, TypeVar, Set, functools
 from collections import Counter, Mapping
 import hashlib
+import itertools
 
 T = TypeVar('T')
 
@@ -25,9 +26,11 @@ def min_hash_sketch(a: Set[T], b: Set[T], hashs) -> float:
     return count / k
 
 
-def create_hash(f, shift):
+def create_hash((f, shift)):
+    print(shift)
+
     def func(x):
-        return f((str(x) + shift).encode())
+        return f((str(x) + shift).encode()).hexdigest()
 
     return func
 
@@ -38,12 +41,12 @@ b: Set[int] = set(random.randint(50, 150, 100))
 print(a)
 print(b)
 
-f1 = create_hash(lambda x: hashlib.md5(x).hexdigest(), '')
-f2 = create_hash(lambda x: hashlib.md5(x).hexdigest(), 'aa')
-f3 = create_hash(lambda x: hashlib.md5(x).hexdigest(), 'aaa')
-f4 = create_hash(lambda x: hashlib.sha256(x).hexdigest(), '')
-f5 = create_hash(lambda x: hashlib.sha256(x).hexdigest(), 'aa')
-f6 = create_hash(lambda x: hashlib.sha256(x).hexdigest(), 'aaa')
+f1 = create_hash(lambda x: hashlib.md5(x), '')
+f2 = create_hash(lambda x: hashlib.md5(x), 'aa')
+f3 = create_hash(lambda x: hashlib.md5(x), 'aaa')
+f4 = create_hash(lambda x: hashlib.sha256(x), '')
+f5 = create_hash(lambda x: hashlib.sha256(x), 'aa')
+f6 = create_hash(lambda x: hashlib.sha256(x), 'aaa')
 
 hashs = [f1, f2, f3, f4, f5, f6]
 
