@@ -26,8 +26,9 @@ def min_hash_sketch(a: Set[T], b: Set[T], hashs) -> float:
     return count / k
 
 
-def create_hash((f, shift)):
-    print(shift)
+def create_hash(t):
+    f = t[0]
+    shift = t[1]
 
     def func(x):
         return f((str(x) + shift).encode()).hexdigest()
@@ -41,14 +42,9 @@ b: Set[int] = set(random.randint(50, 150, 100))
 print(a)
 print(b)
 
-f1 = create_hash(lambda x: hashlib.md5(x), '')
-f2 = create_hash(lambda x: hashlib.md5(x), 'aa')
-f3 = create_hash(lambda x: hashlib.md5(x), 'aaa')
-f4 = create_hash(lambda x: hashlib.sha256(x), '')
-f5 = create_hash(lambda x: hashlib.sha256(x), 'aa')
-f6 = create_hash(lambda x: hashlib.sha256(x), 'aaa')
-
-hashs = [f1, f2, f3, f4, f5, f6]
+fs = [lambda x: hashlib.md5(x), lambda x: hashlib.sha256(x)]
+shifts = ['', 'a', 'aa', 'aaa']
+hashs = list(map(create_hash, itertools.product(fs, shifts)))
 
 print(jaccard(a, b))
 print(min_hash_sketch(a, b, hashs))
