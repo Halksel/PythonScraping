@@ -38,12 +38,12 @@ b: Set[int] = set(random.randint(50, 150, 100))
 print(a)
 print(b)
 
-f1 = create_hash(lambda x: hashlib.md5(str(x).encode()).hexdigest(), '')
-f2 = create_hash(lambda x: hashlib.md5(str(x).encode()).hexdigest(), 'aa')
-f3 = create_hash(lambda x: hashlib.md5(str(x).encode()).hexdigest(), 'aaa')
-f4 = create_hash(lambda x: hashlib.sha256(str(x).encode()).hexdigest(), '')
-f5 = create_hash(lambda x: hashlib.sha256(str(x).encode()).hexdigest(), 'aa')
-f6 = create_hash(lambda x: hashlib.sha256(str(x).encode()).hexdigest(), 'aaa')
+f1 = create_hash(lambda x: hashlib.md5(x).hexdigest(), '')
+f2 = create_hash(lambda x: hashlib.md5(x).hexdigest(), 'aa')
+f3 = create_hash(lambda x: hashlib.md5(x).hexdigest(), 'aaa')
+f4 = create_hash(lambda x: hashlib.sha256(x).hexdigest(), '')
+f5 = create_hash(lambda x: hashlib.sha256(x).hexdigest(), 'aa')
+f6 = create_hash(lambda x: hashlib.sha256(x).hexdigest(), 'aaa')
 
 hashs = [f1, f2, f3, f4, f5, f6]
 
